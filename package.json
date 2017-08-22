@@ -14,11 +14,12 @@
     "emoji"
   ],
   "dependencies": {
-    "extend": "^3.0.0",
     "classnames": "^2.1.3",
+    "extend": "^3.0.0",
     "handlebars": "^4.0.5"
   },
   "devDependencies": {
+    "file-loader": "^0.11.2",
     "gfs-doc": "^0.1.26",
     "gulp-run-sequence": "^0.3.2",
     "internal-ip": "^1.2.0",
