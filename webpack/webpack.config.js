@@ -83,6 +83,10 @@ module.exports = {
                 loader: "handlebars-loader"
             },
             {
+                test: /\.json$/,
+                loader: "json-loader"
+            },
+            {
                 test: /\.(mp3|ogg|wav|swf)\??.*$/,
                 loader: 'file-loader'
             },
