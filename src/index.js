@@ -1,6 +1,7 @@
 import EmojiContent from './template/emojicontent.html'
 import EmojiContainer from './template/emojiContainer.html'
 import '../css/index.less'
+import Delegate from './utils/delegate.js';
 
 var emojiConfig=require('./emoji.json')
 function strToDom(htmlStr){
@@ -11,7 +12,7 @@ function strToDom(htmlStr){
 class Emoji{
     init(){
         console.log(emojiConfig)
-        let activeIndex=0,
+        let activeIndex=3,
             emoji = emojiConfig.emoji,
             activeEmojiPackage=emoji[activeIndex],
             activeEmojiList=activeEmojiPackage.list,
@@ -19,12 +20,27 @@ class Emoji{
             emojiContent=EmojiContent({
                 entry:activeEmojiEntry,
                 emojiList:activeEmojiList
-            })
-        let emojiId=new Date()-0+parseInt(Math.random()*1000,10)
-        let $emojiContainer=strToDom(EmojiContainer({emojiId}))
+            }),
+            emojiId=new Date()-0+parseInt(Math.random()*1000,10),
+            entryList=emoji.map(config=>config.entry),
+            $emojiContainer=strToDom(EmojiContainer({
+                emojiId,
+                entryList}))
+        this.emojiId=emojiId
         document.body.appendChild($emojiContainer)
         let $emojiList=document.querySelector(`#emojiContainer${emojiId} .emoji-list`)
+        this.$emojiList=$emojiList
         $emojiList.innerHTML+=emojiContent
+        this.bindListener()
+    }
+    changeEmojiPackage(e){
+        console.log(e)
+    }
+    bindListener(){
+        let _this=this,
+            $container=document.getElementById('emojiContainer'+this.emojiId),
+            delegate=new Delegate($container)
+        delegate.on('click','.tabbar-item',this.changeEmojiPackage)
     }
 }
 export default Emoji

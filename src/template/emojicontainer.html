@@ -2,9 +2,11 @@
     <ul class='emoji-list'>
     </ul>
     <div class="emoji-tabbar">
+        {{#each entryList}}
         <div class="tabbar-item">
-            <img src="https://x.sankuai.com/public/images/xiaotuan@2x.png">
+            <i class="emoji-entry-{{prefix}}"></i>
         </div>
+        {{/each}}
         <div class="arrow-down"></div>
     </div>
 </div>

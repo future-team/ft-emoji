@@ -58,11 +58,6 @@ module.exports = {
         }
     }],
     module: {
-        preLoaders: [{
-            test: /\.(jsx|es6|js)$/,
-            loaders: ['eslint-loader'],
-            exclude: /node_modules/
-        }],
         loaders: [{
                 test: /\.js$/,
                 loaders: ['babel'],
@@ -92,7 +87,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                loader: 'url?limit=35000'
+                loader: 'url?limit=50000'
             }
             /*,
                          {

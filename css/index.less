@@ -1,4 +1,6 @@
 @import './icon.less';
+@emoji-size-sm:24px;
+@emoji-size-md:48px;
 .emoji-list{
     list-style: none;
     padding: 10px 20px;
@@ -16,9 +18,14 @@
         cursor: pointer;
         i{
             display: block;
-            width: 24px;
-            height: 24px;
-            background-size: 24px 24px;
+            width: @emoji-size-sm;
+            height: @emoji-size-sm;
+            background-size: @emoji-size-sm @emoji-size-sm;
+            &.emoji-icon-1,&.emoji-icon-2,&.emoji-icon-3{
+                width: @emoji-size-md;
+                height: @emoji-size-md;
+                background-size: @emoji-size-md @emoji-size-md;
+            }
         }
     }
 }
@@ -44,10 +51,12 @@
         top: -1px;
         border-left: 1px solid transparent;
         border-right: 1px solid transparent;
-        img{
+        i{
             vertical-align: middle;
             width: 20px;
             height: 20px;
+            display: inline-block;
+            background-size:20px 20px;
         }
     }
 }
