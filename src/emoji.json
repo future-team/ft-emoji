@@ -2,7 +2,8 @@
     "emoji":[
         {
             "entry":{
-                "prefix":"0"
+                "prefix":"0",
+                "label":""
             },
             "list":[
                 {
@@ -135,7 +136,8 @@
             ]
         },{
             "entry":{
-                "prefix":1
+                "prefix":1,
+                "label":"小团"
             },
             "list":[
                 {
@@ -171,7 +173,8 @@
         },{
             "entry":{
                 "prefix":2,
-                "fileType":"gif"
+                "fileType":"gif",
+                "label":"流氓兔"
             },
             "list":[
                 {
@@ -211,7 +214,8 @@
         },{
             "entry":{
                 "prefix":3,
-                "fileType":"gif"
+                "fileType":"gif",
+                "label":"欢乐兔"
             },
             "list":[
                 {

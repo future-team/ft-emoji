@@ -1,6 +1,17 @@
 @import './icon.less';
 @emoji-size-sm:24px;
 @emoji-size-md:48px;
+i.emoji-icon {
+    display: inline-block;
+    width: @emoji-size-sm;
+    height: @emoji-size-sm;
+    background-size: @emoji-size-sm @emoji-size-sm;
+    &.emoji-icon-1,&.emoji-icon-2,&.emoji-icon-3{
+        width: @emoji-size-md;
+        height: @emoji-size-md;
+        background-size: @emoji-size-md @emoji-size-md;
+    }
+}
 .emoji-list{
     list-style: none;
     padding: 10px 20px;
@@ -16,16 +27,8 @@
         float:left;
         padding: 4px;
         cursor: pointer;
-        i{
+        i.emoji-icon {
             display: block;
-            width: @emoji-size-sm;
-            height: @emoji-size-sm;
-            background-size: @emoji-size-sm @emoji-size-sm;
-            &.emoji-icon-1,&.emoji-icon-2,&.emoji-icon-3{
-                width: @emoji-size-md;
-                height: @emoji-size-md;
-                background-size: @emoji-size-md @emoji-size-md;
-            }
         }
     }
 }
@@ -51,6 +54,9 @@
         top: -1px;
         border-left: 1px solid transparent;
         border-right: 1px solid transparent;
+        &.active{
+            background: #fff;
+        }
         i{
             vertical-align: middle;
             width: 20px;
@@ -60,9 +66,31 @@
         }
     }
 }
-.emoji-container{
+.emoji-content{
     width: 384px;
     z-index: 10;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,.24);
     border-radius: 4px;
+    position:absolute;
+}
+.emoji-container{
+    display: none;
+    &.show{
+        display: block;
+    }
+    .arrow-down{
+        position: absolute;
+        background: #f8f8f8;
+        width: 14px;
+        height: 14px;
+        left: 50%;
+        margin-left: -8px;
+        -webkit-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+        border-right: 0;
+        border-bottom: 0;
+        box-shadow: -3px -3px 7px -2px rgba(0,0,0,.24);
+        z-index: -1;
+        bottom: -5px;
+    }
 }
