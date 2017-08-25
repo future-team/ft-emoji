@@ -127,8 +127,7 @@ class Emoji{
         if(!$triggerEle){
             return
         }
-        let triggerEleDim=this.getDimension($triggerEle),
-            triggerELeOffsetX=triggerEleDim.left+triggerEleDim.width/2
+        let triggerEleDim=this.getDimension($triggerEle)
         console.log(triggerEleDim)
         // let emojiContentLeft=triggerELeOffsetX-emojiContentWidth/2
         // if(emojiContentLeft<0){

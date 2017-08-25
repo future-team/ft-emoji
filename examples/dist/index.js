@@ -260,8 +260,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (!$triggerEle) {
 	            return;
 	        }
-	        var triggerEleDim = this.getDimension($triggerEle),
-	            triggerELeOffsetX = triggerEleDim.left + triggerEleDim.width / 2;
+	        var triggerEleDim = this.getDimension($triggerEle);
 	        console.log(triggerEleDim);
 	        // let emojiContentLeft=triggerELeOffsetX-emojiContentWidth/2
 	        // if(emojiContentLeft<0){
