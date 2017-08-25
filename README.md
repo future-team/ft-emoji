@@ -33,6 +33,8 @@ emojiTrigger.addEventListener('click',function(){
 var $result=document.getElementById('result')
 result.innerHTML=emoji.parse('[OK][小团_OK]小团_OK[流氓兔_再见]流氓兔_再见[欢乐兔_走开]欢乐兔_走开')
 ```
+## Demo
+![demo](./emoji-demo.gif)
 ## 注意事项
 
 全局只应该有一个emoji对象，请勿多次实例化
