@@ -35,9 +35,19 @@ result.innerHTML=emoji.parse('[OK][小团_OK]小团_OK[流氓兔_再见]流氓�
 ```
 ## Demo
 ![demo](./emoji-demo.gif)
+
+[线上demo地址](https://future-team.github.io/ft-emoji/examples/dist/)
+
 ## 注意事项
 
 全局只应该有一个emoji对象，请勿多次实例化
+如果安装依赖之后抛出handlebar的相关错误，请用npm安装handlebars-loader，并在webpack config文件里的loaders数组里添加
+```js
+{
+   test: /\.html$/,
+   loader: "handlebars-loader"
+}
+```
 
 ## 安装
 
