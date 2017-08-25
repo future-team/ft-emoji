@@ -40,12 +40,7 @@ result.innerHTML=emoji.parse('[OK][小团_OK]小团_OK[流氓兔_再见]流氓�
 ## 安装
 
 ```
-	#测试	
-	npm run test	
-	#打包	
-	npm run build	
-	#例子演示	
-	npm start
+	npm install ft-emoji --save
 ```
 
 
