@@ -15,8 +15,8 @@
 ```
 - init(opts) opts为初始化配置对象，以下为opts属性
 - triggerEle 锚点element的id，该id用于点击弹出层以外区域自动关闭的逻辑判断 
-- emojiClickCallback 点击表情的回调，会传入该表情对应的文字，如果需要点击之后关闭弹出层可以在该方法里手动调用close方法
-- platform 针对pc还是app得到表情包。目前支持了pc，可先不传
+- emojiClickCallback 点击表情的回调，会传入该表情对应的文字，如果需要点击之后关闭弹出层可以在该回调方法里手动调用close方法
+- platform 针对pc还是app得到表情包。目前只支持了pc，可先不传
 
 ```js
 var emoji=new Emoji()
