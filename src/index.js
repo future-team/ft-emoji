@@ -94,8 +94,14 @@ class Emoji{
         delegate.on('click','.tabbar-item',this.changeEmojiPackage.bind(this))
         delegate.on('click','.emoji-icon',this.emojiClick.bind(this))
         delegate.on('click','.emoji-content',function(e){e.stopPropagation()})
+        document.addEventListener('click',function(e){
+            if(_this.openStatus&&e.target!==_this.$triggerEle){
+                _this.close()
+            }
+        })
     }
     close(){
+        this.openStatus=false
         removeClass(this.$emojiContainer,'show')
     }
     parse(str=""){ 
@@ -117,6 +123,7 @@ class Emoji{
             $emojiContent=this.$emojiContent,
             emojiContentWidth=384,
             emojiContentStyle=$emojiContent.style
+        this.openStatus=true
         if(!$triggerEle){
             return
         }
@@ -133,7 +140,7 @@ class Emoji{
         // let docHeight = Math.max( body.scrollHeight, body.offsetHeight, 
         //                html.clientHeight, html.scrollHeight, html.offsetHeight ),
         //     emojiContentBottom=docHeight-triggerEleDim.top+10
-        emojiContentStyle.bottom=triggerEleDim.height+5+'px'
+        emojiContentStyle.bottom=triggerEleDim.height+15+'px'
         emojiContentStyle.left=(triggerEleDim.width-emojiContentWidth)/2+'px'
         addClass(this.$emojiContainer,'show')
     }

@@ -11,4 +11,4 @@ emojiTrigger.addEventListener('click',function(){
     emoji.open()
 })
 var $result=document.getElementById('result')
-result.innerHTML=emoji.parse('[OK][小团_OK]test[流氓兔_再见]fuck[欢乐兔_走开]')
+result.innerHTML=emoji.parse('[OK][小团_OK]小团_OK[流氓兔_再见]流氓兔_再见[欢乐兔_走开]欢乐兔_走开')
