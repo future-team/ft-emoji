@@ -6,6 +6,7 @@ i.emoji-icon {
     width: @emoji-size-sm;
     height: @emoji-size-sm;
     background-size: @emoji-size-sm @emoji-size-sm;
+    background-repeat: no-repeat;
     &.emoji-icon-1,&.emoji-icon-2,&.emoji-icon-3{
         width: @emoji-size-md;
         height: @emoji-size-md;
@@ -16,6 +17,7 @@ i.emoji-icon {
     list-style: none;
     padding: 10px 20px;
     margin: 0;
+    overflow: hidden;
     &::after{
         content: '';
         clear: both;

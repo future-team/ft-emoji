@@ -26,12 +26,7 @@ module.exports = {
         filename: '[name].js'
     },
     externals: [{
-        "jquery": {
-            "root": "$",
-            "commonjs2": "jquery",
-            "commonjs": "jquery",
-            "amd": "jquery"
-        },
+       
         'react': {
             root: 'React',
             commonjs2: 'react',
@@ -87,7 +82,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                loader: 'url?limit=5000'
+                loader: 'url?limit=50000'
             }
             /*,
                          {
@@ -101,11 +96,7 @@ module.exports = {
             disable: false,
             allChunks: true
         }),
-        new es3ifyPlugin(),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        })
+        new es3ifyPlugin()
         /*,
                  new webpack.DefinePlugin({
                  'process.env':{

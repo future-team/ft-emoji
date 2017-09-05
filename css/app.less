@@ -1,0 +1,40 @@
+@import './index.less';
+.emoji-container.app-emoji-container{
+    .emoji-content{
+        position: relative;
+        width: 100%;
+        .emoji-list{
+            padding: 0;
+            width: 100%;
+            .swiper-wrapper{
+                margin-bottom: 20px;
+            }
+            .swiper-pagination{
+                bottom: 5px;
+            }
+            li{
+                &.emoji-group-0{
+                    width:12.5%;
+                    padding: 16.66% 0 0 0;
+                }
+                width: 25%;
+                box-sizing: border-box;
+                position: relative;
+                padding: 25% 0 0 0;
+                i{
+                    display: block;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top:0;
+                    background-size: 70%;
+                    background-position: center;
+                }
+            }
+        }
+        .arrow-down{
+            display: none;
+        }
+    }
+}
+

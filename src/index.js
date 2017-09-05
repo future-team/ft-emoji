@@ -1,34 +1,21 @@
 import EmojiContent from './template/emojicontent.html'
 import EmojiContainer from './template/emojiContainer.html'
+import {addClass,removeClass,hasClass} from './utils/class-operation.js'
+import {strToDom} from './utils/dom.js'
 import '../css/index.less'
-import Delegate from './utils/delegate.js';
-import {addClass,removeClass,hasClass} from './utils/class-operation.js';
 
 var emojiConfig=require('./emoji.json')
-function strToDom(htmlStr){
-    var wrapper= document.createElement('div');
-    wrapper.innerHTML= htmlStr;
-    return wrapper.firstChild;
-}
 class Emoji{
-    getDimension( el ) {
-        var elemRect = el.getBoundingClientRect()
-        return {
-            top:elemRect.top+ window.scrollY,
-            left: elemRect.left+ window.scrollX,
-            width:el.clientWidth,
-            height:el.clientHeight
-        }
-    }
     init(opts={}){
         console.log(emojiConfig)
         let emoji = emojiConfig.emoji,
             emojiId=new Date()-0+parseInt(Math.random()*1000,10),
             entryList=emoji.map(config=>config.entry),
             $emojiContainer=strToDom(EmojiContainer({
+                app:(opts.type=='app'?true:false),
                 emojiId,
                 entryList}))
-        this.$triggerEle=document.getElementById(opts.triggerEle)
+        this.$triggerEle=document.getElementById(opts.containerId)
         this.emojiId=emojiId
         this.$triggerEle.appendChild($emojiContainer)
         this.$emojiContainer=$emojiContainer
@@ -42,6 +29,7 @@ class Emoji{
                 {packageLabelMap,emojiLabelMap}=this,
                 curEmojiLabelMap={}
                 emjList.forEach((emj,emjIndex)=>{
+                    emj.index=emjIndex
                     curEmojiLabelMap[emj.label]=emjIndex
                 })
                 packageLabelMap[entry.label]=index
@@ -49,6 +37,9 @@ class Emoji{
         })
         this.bindListener()
         this.activeEmojiPackage(0)
+        if(opts.type=='app'){
+            addClass(this.$emojiContainer,'show')
+        }
     }
     activeEmojiPackage(activeIndex){
         let emojiId=this.emojiId,
@@ -63,13 +54,8 @@ class Emoji{
         let emoji = emojiConfig.emoji,
             activeEmojiPackage=emoji[activeIndex],
             activeEmojiList=activeEmojiPackage.list,
-            activeEmojiEntry=activeEmojiPackage.entry,
-            emojiContent=EmojiContent({
-                entry:activeEmojiEntry,
-                emojiList:activeEmojiList
-            })
-        let $emojiList=document.querySelector(`#emojiContainer${emojiId} .emoji-list`)
-        $emojiList.innerHTML=emojiContent
+            activeEmojiEntry=activeEmojiPackage.entry
+        this.renderEmojiContent(activeEmojiEntry,activeEmojiList,document.querySelector(`#emojiContainer${emojiId} .emoji-list`))
     }
     changeEmojiPackage(e){
         e.stopPropagation()
@@ -86,19 +72,6 @@ class Emoji{
             dataset=target.dataset,
             result=(dataset.paclabel==""?`[${dataset.label}]`:`[${dataset.paclabel}_${dataset.label}]`)
         this.emojiClickCallback(result)
-    }
-    bindListener(){
-        let _this=this,
-            $container=document.getElementById('emojiContainer'+this.emojiId),
-            delegate=new Delegate($container)
-        delegate.on('click','.tabbar-item',this.changeEmojiPackage.bind(this))
-        delegate.on('click','.emoji-icon',this.emojiClick.bind(this))
-        delegate.on('click','.emoji-content',function(e){e.stopPropagation()})
-        document.addEventListener('click',function(e){
-            if(_this.openStatus&&e.target!==_this.$triggerEle){
-                _this.close()
-            }
-        })
     }
     close(){
         this.openStatus=false
@@ -117,31 +90,6 @@ class Emoji{
             console.log(pacIndex,emjIndex)
             return `<i class="emoji-icon emoji-icon-${pacIndex} emoji-icon-${pacIndex}-${emjIndex}"></i>`;
         })
-    }
-    open(){
-        let $triggerEle=this.$triggerEle,
-            $emojiContent=this.$emojiContent,
-            emojiContentWidth=384,
-            emojiContentStyle=$emojiContent.style
-        this.openStatus=true
-        if(!$triggerEle){
-            return
-        }
-        let triggerEleDim=this.getDimension($triggerEle)
-        console.log(triggerEleDim)
-        // let emojiContentLeft=triggerELeOffsetX-emojiContentWidth/2
-        // if(emojiContentLeft<0){
-        //     emojiContentLeft=0
-        // }
-        // let body = document.body,
-        //     html = document.documentElement;
-
-        // let docHeight = Math.max( body.scrollHeight, body.offsetHeight, 
-        //                html.clientHeight, html.scrollHeight, html.offsetHeight ),
-        //     emojiContentBottom=docHeight-triggerEleDim.top+10
-        emojiContentStyle.bottom=triggerEleDim.height+15+'px'
-        emojiContentStyle.left=(triggerEleDim.width-emojiContentWidth)/2+'px'
-        addClass(this.$emojiContainer,'show')
     }
 }
 export default Emoji
