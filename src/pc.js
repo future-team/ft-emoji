@@ -26,8 +26,10 @@ class Emoji extends EmojiBase{
             }
         })
     }
-    renderEmojiContent(entry,list,$container){
-        let contentStr=EmojiContent({
+    renderEmojiContent(entry,list){
+        let emojiId=this.emojiId,
+            $container=document.querySelector(`#emojiContainer${emojiId} .emoji-list`),
+            contentStr=EmojiContent({
                 entry,
                 emojiList:list
             })

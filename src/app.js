@@ -32,8 +32,9 @@ class Emoji extends EmojiBase{
        </div>`      
         return strToDom(domStr)
     }
-    renderEmojiContent(entry,list,$container){
+    renderEmojiContent(entry,list){
         let emojiId=this.emojiId,
+            $container=document.querySelector(`#emojiContainer${emojiId} .emoji-list`),
             emojiPageNo=entry.prefix==0?24:8,
             $listContent=this.generateSwiper(entry,list,emojiPageNo)
         emptyNode($container)

@@ -55,7 +55,7 @@ class Emoji{
             activeEmojiPackage=emoji[activeIndex],
             activeEmojiList=activeEmojiPackage.list,
             activeEmojiEntry=activeEmojiPackage.entry
-        this.renderEmojiContent(activeEmojiEntry,activeEmojiList,document.querySelector(`#emojiContainer${emojiId} .emoji-list`))
+        this.renderEmojiContent(activeEmojiEntry,activeEmojiList)
     }
     changeEmojiPackage(e){
         e.stopPropagation()
