@@ -1,7 +1,6 @@
-<ul class='emoji-list'>
-    {{#each emojiList}}
-    <li>
-       <i class='icon-{{class}}' />
+
+{{#each emojiList}}
+    <li class='emoji-group-{{../entry.prefix}}'>
+        <i data-pacprefix="{{../entry.prefix}}" data-paclabel="{{../entry.label}}" data-label="{{label}}" class='emoji-icon emoji-icon-{{../entry.prefix}} emoji-icon-{{../entry.prefix}}-{{index}}'></i>
     </li>
-    {{/each}}
-</ul>
+{{/each}}

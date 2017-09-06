@@ -75,7 +75,12 @@ gulp.task('min-webpack', function(done) {
         done();
     });
 });
-
+gulp.task('copy', function(done) {
+    gulp.src('src/**/*.json')
+        .pipe(gulp.dest('lib'));
+    gulp.src('src/**/*.html')
+        .pipe(gulp.dest('lib'));
+});
 gulp.task('babel', function(done) {
     return gulp.src('src/**/*.js')
         .pipe(babel())
@@ -87,7 +92,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', function(cb) {
-    runSequence('babel', 'webpack-module', 'webpack-example', cb);
+    runSequence('babel','copy','webpack-module', 'webpack-example', cb);
 });
 
 //gulp.task('default', ['babel', 'webpack-module','webpack-example']);

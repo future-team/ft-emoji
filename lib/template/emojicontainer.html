@@ -1,0 +1,14 @@
+<div class='emoji-container{{#if app}} app-emoji-container{{/if}}' id='emojiContainer{{emojiId}}'>
+    <div class="emoji-content">
+        <ul class='emoji-list'>
+        </ul>
+        <div class="emoji-tabbar">
+            {{#each entryList}}
+            <div data-entry="{{@index}}" class="tabbar-item">
+                <i class="emoji-entry-{{prefix}}"></i>
+            </div>
+            {{/each}}
+            <div class="arrow-down"></div>
+        </div>
+    </div>
+</div>

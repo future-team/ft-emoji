@@ -211,9 +211,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _templateEmojicontentHtml2 = _interopRequireDefault(_templateEmojicontentHtml);
 	
-	var _templateEmojiContainerHtml = __webpack_require__(26);
+	var _templateEmojicontainerHtml = __webpack_require__(26);
 	
-	var _templateEmojiContainerHtml2 = _interopRequireDefault(_templateEmojiContainerHtml);
+	var _templateEmojicontainerHtml2 = _interopRequireDefault(_templateEmojicontainerHtml);
 	
 	var _utilsClassOperationJs = __webpack_require__(27);
 	
@@ -239,7 +239,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            entryList = emoji.map(function (config) {
 	            return config.entry;
 	        }),
-	            $emojiContainer = _utilsDomJs.strToDom(_templateEmojiContainerHtml2['default']({
+	            $emojiContainer = _utilsDomJs.strToDom(_templateEmojicontainerHtml2['default']({
 	            app: opts.type == 'app' ? true : false,
 	            emojiId: emojiId,
 	            entryList: entryList }));

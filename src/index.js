@@ -1,5 +1,5 @@
 import EmojiContent from './template/emojicontent.html'
-import EmojiContainer from './template/emojiContainer.html'
+import EmojiContainer from './template/emojicontainer.html'
 import {addClass,removeClass,hasClass} from './utils/class-operation.js'
 import {strToDom} from './utils/dom.js'
 import '../css/index.less'
