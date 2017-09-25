@@ -6,21 +6,8 @@ import '../css/index.less'
 
 var emojiConfig=require('./emoji.json')
 class Emoji{
-    init(opts={}){
-        console.log(emojiConfig)
-        let emoji = emojiConfig.emoji,
-            emojiId=new Date()-0+parseInt(Math.random()*1000,10),
-            entryList=emoji.map(config=>config.entry),
-            $emojiContainer=strToDom(EmojiContainer({
-                app:(opts.type=='app'?true:false),
-                emojiId,
-                entryList}))
-        this.$triggerEle=document.getElementById(opts.containerId)
-        this.emojiId=emojiId
-        this.$triggerEle.appendChild($emojiContainer)
-        this.$emojiContainer=$emojiContainer
-        this.$emojiContent=document.querySelector(`#emojiContainer${emojiId} .emoji-content`)
-        this.emojiClickCallback=opts.emojiClickCallback||function(){}
+    constructor(){
+        let emoji = emojiConfig.emoji
         this.packageLabelMap={}
         this.emojiLabelMap={}
         emoji.forEach((pac,index)=>{
@@ -35,6 +22,21 @@ class Emoji{
                 packageLabelMap[entry.label]=index
                 emojiLabelMap[index]=curEmojiLabelMap
         })
+    }
+    init(opts={}){
+        let emoji = emojiConfig.emoji,
+            emojiId=new Date()-0+parseInt(Math.random()*1000,10),
+            entryList=emoji.map(config=>config.entry),
+            $emojiContainer=strToDom(EmojiContainer({
+                app:(opts.type=='app'?true:false),
+                emojiId,
+                entryList}))
+        this.$triggerEle=document.getElementById(opts.containerId)
+        this.emojiId=emojiId
+        this.$triggerEle.appendChild($emojiContainer)
+        this.$emojiContainer=$emojiContainer
+        this.$emojiContent=document.querySelector(`#emojiContainer${emojiId} .emoji-content`)
+        this.emojiClickCallback=opts.emojiClickCallback||function(){}
         this.bindListener()
         this.activeEmojiPackage(0)
         if(opts.type=='app'){
