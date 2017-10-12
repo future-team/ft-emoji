@@ -88,8 +88,10 @@ class Emoji{
             if(arr.length==2){
                 pacIndex=packageLabelMap[arr[0]]
             }
+            if(pacIndex===undefined){
+                return  `[${b}]`
+            }
             emjIndex=emojiLabelMap[pacIndex][arr.pop()]
-            console.log(pacIndex,emjIndex)
             return `<i class="emoji-icon emoji-icon-${pacIndex} emoji-icon-${pacIndex}-${emjIndex}"></i>`;
         })
     }
