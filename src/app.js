@@ -25,7 +25,7 @@ class Emoji extends EmojiBase{
         let domStr=  `<div class='swiper-container'>
                 <div class="swiper-wrapper">
                     ${
-                        contentList.map(cont=>`<div class="swiper-slide">${cont}</div>`).join('')
+                        contentList.map(cont=>`<div class="swiper-slide"><div class="emj-padding-wrapper">${cont}</div></div>`).join('')
                     }
                 </div>
             <div class="swiper-pagination"></div>
