@@ -92,6 +92,9 @@ class Emoji{
                 return  `[${b}]`
             }
             emjIndex=emojiLabelMap[pacIndex][arr.pop()]
+            if(emjIndex===undefined){
+                return  `[${b}]`
+            }
             return `<i class="emoji-icon emoji-icon-${pacIndex} emoji-icon-${pacIndex}-${emjIndex}"></i>`;
         })
     }
